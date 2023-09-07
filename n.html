@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black; /* fallback background color */
+    }
+
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index:-1;
+    }
+
+    #video-background video {
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    #center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="video-background">
+    <video autoplay muted loop>
+      <source src="space-2381.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div id="center-text">
+    <p>We got Your Information <br> <a href="contact.html"> Go back!</a></p>
+  </div>
+
+</body>
+
+</html>
+

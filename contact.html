@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Contact Form</title>
+<script src="try.js"></script>
+<style>
+  fieldset {
+    border: 1px solid black;
+    padding: 50px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    background-color: #6f223144;
+    border-radius: 9px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  #n1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  input[type="text"], textarea {
+    border: 4px solid white;
+    border-top: 1px solid #6f223144;
+    border-left: 1px solid #6f223144;
+    border-right:1px solid #6f223144;
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    color:#fff;
+    background-color: #6f223144;
+
+  }
+  #video1{
+     height:100vh;
+     width:100%;
+
+
+
+  }
+  input[type="submit"] {
+    background-color: #f32516a0;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8%;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;}
+  body {
+   background-color: #020203fe;
+   overflow:hidden
+  }
+  
+  #clock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 1.5%;
+    padding: 6px;
+    background-color: #e8ffc63a;
+    border: 1px solid #e1fcb7;
+    color:#e1fcb7;
+    margin-left:5%;
+    
+  }
+  #new{
+    margin:auto;
+    margin-top:5%;
+  }
+  .ner {
+    margin-top:2%;
+    font-size: 3.8vh;
+
+    float:right;
+   color:wheat;
+  }
+  button[title] {
+    position: relative;
+    float:right;
+    margin-top:-1.4% ;
+  }
+  #new1{
+    position:absolute;
+      top:50% ;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      
+  }
+  @media  screen and (max-width:600px) {
+    #new1{
+      width:max-content;
+      height:500px;
+      margin-top: 2%;
+    }
+
+  }
+  
+</style>
+<script>
+  function showClock() {
+    var now = new Date();
+    var hours = now.getUTCHours() + 5; // Add 5 hours for IST
+    var minutes = now.getUTCMinutes() + 30; // Add 30 minutes for IST
+    var seconds = now.getUTCSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM'; // Determine if it's AM or PM
+    hours = hours % 12 || 12; // Convert to 12-hour format
+    if (hours < 10) { hours = '0' + hours; } // Add leading zero if needed
+    var timeString = hours + ' | ' + minutes.toString().padStart(2, '0') + ' | ' + seconds.toString().padStart(2, '0') + ' | ' + ampm;
+    document.getElementById('clock').textContent = timeString;
+    setTimeout(showClock, 1000);
+}
+
+  window.onload = showClock;
+</script>
+</head>
+
+<body >
+
+<a target=" _blank" href="https://github.com/vanbitcase"><image style="width: 70px; height: 70px ;float: right;margin-top: -1%;" src="https://drive.google.com/uc?id=119KVRFJrVy0OmVBiu65HI8gygDSkFQGw"></image>
+</a>
+  <div id="clock"></div>
+
+<div id="video-background">
+  <video autoplay muted loop>
+    <source src="https://drive.google.com/uc?id=1hg9A57ZoiCH62Oyg2BbSLMxGUiVPzD8k" type="video/mp4">
+    Your browser does not support the video tag.
+  </video></div>
+<div id="new1">
+<fieldset>
+<p id="n1" style="color:white;">Contact Form</p>
+<form name="frmContact" method="post" action="contact.php">
+<p>
+<label for="Name">Name </label>
+<input type="text" name="txtName" id="txtName"onblur="validateName()" required>
+</p>
+<p>
+<label for="Email">Email </label>
+<input type="text" name="txtEmail" id="txtEmail"onblur="validateEmail()" required>
+</p>
+<p>
+<label for="phone">Phone</label>
+<input type="text" name="txtPhone" id="txtPhone"onblur="validatePhone()" required >
+</p>
+<p>
+<label for="message">Message</label>
+<textarea name="txtMessage" id="txtMessage"></textarea>
+</p>
+<p>&nbsp;</p>
+<center>
+<input type="submit" name="Submit" id="Submit" value="Go!">
+</center>
+</form>
+</fieldset>
+</div>
+<script>
+    function validateName() {
+            var nameField = document.getElementById('txtName');
+            var name = nameField.value;
+            var regex = /^[a-zA-Z\s]+$/;
+            if (!regex.test(name)) {
+                alert('Name should contain only letters and spaces.');
+                nameField.value = ''; // Clear the input field
+            }
+        }
+
+        function validateEmail() {
+            var emailField = document.getElementById('txtEmail');
+            var email = emailField.value;
+            var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!regex.test(email)) {
+                alert('Invalid email format.');
+                emailField.value = ''; // Clear the input field
+            }
+        }
+
+        function validatePhone() {
+            var phoneField = document.getElementById('txtPhone');
+            var phone = phoneField.value;
+            var regex = /^[0-9]+$/;
+            if (!regex.test(phone)) {
+                alert('Phone No. should contain only numbers.');
+                phoneField.value = ''; // Clear the input field
+            }
+        }
+</script>
+
+</body>
+</html>
